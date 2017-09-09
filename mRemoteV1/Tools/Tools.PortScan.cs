@@ -15,19 +15,22 @@ namespace mRemoteNG.Tools
         #region Private Members
 		private List<IPAddress> _ipAddresses = new List<IPAddress>();
 		private List<int> _ports = new List<int>();
+        private int _timeout;
 		private Thread _scanThread;
 		private List<ScanHost> _scannedHosts = new List<ScanHost>();
         #endregion
 				
         #region Public Methods
 	
-		public PortScanner(IPAddress ipAddress1, IPAddress ipAddress2, int port1, int port2)
+		public PortScanner(IPAddress ipAddress1, IPAddress ipAddress2, int port1, int port2, int timeout = 5)
 		{
             var ipAddressStart = IpAddressMin(ipAddress1, ipAddress2);
             var ipAddressEnd = IpAddressMax(ipAddress1, ipAddress2);
 
             var portStart = Math.Min(port1, port2);
             var portEnd = Math.Max(port1, port2);
+
+            _timeout = timeout;
 					
 			_ports.Clear();
 			for (var port = portStart; port <= portEnd; port++)
@@ -93,7 +96,7 @@ namespace mRemoteNG.Tools
                          * Default timeout is 5 seconds... That's a bit long... 
                          */
                          //TODO Make timeout configurable...
-                        pingSender.SendAsync(ipAddress, /*userToken:*/ ipAddress);
+                        pingSender.SendAsync(ipAddress, _timeout, /*userToken:*/ ipAddress);
                     }
                     catch (Exception ex)
                     {

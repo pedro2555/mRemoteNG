@@ -170,7 +170,7 @@ namespace mRemoteNG.UI.Window
 				var ipAddressStart = System.Net.IPAddress.Parse(ipStart.Text);
 				var ipAddressEnd = System.Net.IPAddress.Parse(ipEnd.Text);
 				
-				_portScanner = new PortScanner(ipAddressStart, ipAddressEnd, (int) portStart.Value, (int) portEnd.Value);
+				_portScanner = new PortScanner(ipAddressStart, ipAddressEnd, (int) portStart.Value, (int) portEnd.Value, (int) timeoutSetting.Value);
 						
 				_portScanner.BeginHostScan += PortScanner_BeginHostScan;
 				_portScanner.HostScanned += PortScanner_HostScanned;

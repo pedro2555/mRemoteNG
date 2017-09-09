@@ -71,11 +71,16 @@ namespace mRemoteNG.UI.Window
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.pnlImport = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.timeoutSetting = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.resultsMenuStrip.SuspendLayout();
             this.pnlPorts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.portStart)).BeginInit();
             this.pnlImport.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timeoutSetting)).BeginInit();
             this.SuspendLayout();
             // 
             // ipStart
@@ -117,7 +122,7 @@ namespace mRemoteNG.UI.Window
             this.btnScan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnScan.Image = global::mRemoteNG.Resources.Search;
             this.btnScan.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnScan.Location = new System.Drawing.Point(592, 7);
+            this.btnScan.Location = new System.Drawing.Point(757, 7);
             this.btnScan.Name = "btnScan";
             this.btnScan.Size = new System.Drawing.Size(100, 60);
             this.btnScan.TabIndex = 20;
@@ -138,7 +143,7 @@ namespace mRemoteNG.UI.Window
             this.lvHosts.HideSelection = false;
             this.lvHosts.Location = new System.Drawing.Point(12, 73);
             this.lvHosts.Name = "lvHosts";
-            this.lvHosts.Size = new System.Drawing.Size(680, 290);
+            this.lvHosts.Size = new System.Drawing.Size(845, 290);
             this.lvHosts.TabIndex = 26;
             this.lvHosts.UseCompatibleStateImageBehavior = false;
             this.lvHosts.View = System.Windows.Forms.View.Details;
@@ -208,7 +213,7 @@ namespace mRemoteNG.UI.Window
             // btnImport
             // 
             this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImport.Location = new System.Drawing.Point(594, 3);
+            this.btnImport.Location = new System.Drawing.Point(759, 3);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(75, 31);
             this.btnImport.TabIndex = 101;
@@ -300,7 +305,7 @@ namespace mRemoteNG.UI.Window
             | System.Windows.Forms.AnchorStyles.Right)));
             this.prgBar.Location = new System.Drawing.Point(12, 50);
             this.prgBar.Name = "prgBar";
-            this.prgBar.Size = new System.Drawing.Size(579, 16);
+            this.prgBar.Size = new System.Drawing.Size(744, 16);
             this.prgBar.Step = 1;
             this.prgBar.TabIndex = 28;
             // 
@@ -368,13 +373,54 @@ namespace mRemoteNG.UI.Window
             this.pnlImport.Controls.Add(this.cbProtocol);
             this.pnlImport.Location = new System.Drawing.Point(12, 369);
             this.pnlImport.Name = "pnlImport";
-            this.pnlImport.Size = new System.Drawing.Size(680, 40);
+            this.pnlImport.Size = new System.Drawing.Size(845, 40);
             this.pnlImport.TabIndex = 102;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.timeoutSetting);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Location = new System.Drawing.Point(597, 7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(156, 38);
+            this.panel1.TabIndex = 103;
+            // 
+            // timeoutSetting
+            // 
+            this.timeoutSetting.Location = new System.Drawing.Point(79, 5);
+            this.timeoutSetting.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.timeoutSetting.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.timeoutSetting.Name = "timeoutSetting";
+            this.timeoutSetting.Size = new System.Drawing.Size(67, 22);
+            this.timeoutSetting.TabIndex = 7;
+            this.timeoutSetting.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Timeout:";
             // 
             // PortScanWindow
             // 
             this.AcceptButton = this.btnImport;
-            this.ClientSize = new System.Drawing.Size(704, 421);
+            this.ClientSize = new System.Drawing.Size(869, 421);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlImport);
             this.Controls.Add(this.lvHosts);
             this.Controls.Add(this.pnlPorts);
@@ -397,6 +443,9 @@ namespace mRemoteNG.UI.Window
             ((System.ComponentModel.ISupportInitialize)(this.portStart)).EndInit();
             this.pnlImport.ResumeLayout(false);
             this.pnlImport.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timeoutSetting)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,5 +462,8 @@ namespace mRemoteNG.UI.Window
         private System.Windows.Forms.ToolStripMenuItem importSSH2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importTelnetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importVNCToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        internal System.Windows.Forms.NumericUpDown timeoutSetting;
+        internal System.Windows.Forms.Label label3;
     }
 }
