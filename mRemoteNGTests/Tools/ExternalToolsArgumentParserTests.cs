@@ -57,6 +57,25 @@ namespace mRemoteNGTests.Tools
             Assert.That(parsedText, Is.EqualTo("test  test"));
         }
 
+        /// <summary>
+        /// Any credential field should be treated as is, no escaping
+        /// 
+        /// Particularly annoying on the password field, since is more prone to random characters
+        /// https://github.com/mRemoteNG/mRemoteNG/issues/711
+        /// </summary>
+        [Test]
+        public void DoNotEscapeCredentials()
+        {
+            ConnectionInfo connInfo = new ConnectionInfo();
+            connInfo.Username = "root!";
+            connInfo.Password = "supersecretpassword!^";
+            connInfo.Domain = "^weirdDomain!";
+            ExternalToolArgumentParser parser = new ExternalToolArgumentParser(connInfo);
+
+            string parsedTest = parser.ParseArguments("%DOMAIN% %USERNAME% %PASSWORD%");
+            Assert.That(parsedTest, Is.EqualTo("^weirdDomain! root! supersecretpassword!^"));
+        }
+
 
 
         private class ParserTestsDataSource
