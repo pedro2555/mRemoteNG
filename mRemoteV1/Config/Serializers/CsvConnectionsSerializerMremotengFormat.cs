@@ -79,6 +79,7 @@ namespace mRemoteNG.Config.Serializers
                 csvWriter = new CsvWriter(writer);
                 csvWriter.Configuration.RegisterClassMap<ConnectionInfoCsvMap>();
                 csvWriter.Configuration.HasHeaderRecord = true;
+                csvWriter.WriteHeader(typeof(ConnectionInfo));
             }
 
             ContainerInfo nodeContainer = serializationTarget as ContainerInfo;

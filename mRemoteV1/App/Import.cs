@@ -17,6 +17,7 @@ namespace mRemoteNG.App
             Unknown = 0,
             // ReSharper disable once InconsistentNaming
             mRemoteXml,
+            mRemoteCsv,
             RemoteDesktopConnection,
             RemoteDesktopConnectionManager,
             PuttyConnectionManager
@@ -36,6 +37,7 @@ namespace mRemoteNG.App
                     var fileTypes = new List<string>();
                     fileTypes.AddRange(new[] {Language.strFilterAllImportable, "*.xml;*.rdp;*.rdg;*.dat"});
                     fileTypes.AddRange(new[] {Language.strFiltermRemoteXML, "*.xml"});
+                    fileTypes.AddRange(new[] {"mRemoteNG CSV Files", "*.csv" }); // TODO: language
                     fileTypes.AddRange(new[] {Language.strFilterRDP, "*.rdp"});
                     fileTypes.AddRange(new[] {Language.strFilterRdgFiles, "*.rdg"});
                     fileTypes.AddRange(new[] {Language.strFilterPuttyConnectionManager, "*.dat"});
@@ -56,6 +58,9 @@ namespace mRemoteNG.App
                             {
                                 case FileType.mRemoteXml:
                                     importer = new mRemoteNGImporter();
+                                    break;
+                                case FileType.mRemoteCsv:
+                                    importer = new mRemoteNGCsvImporter();
                                     break;
                                 case FileType.RemoteDesktopConnection:
                                     importer = new RemoteDesktopConnectionImporter();
@@ -126,6 +131,8 @@ namespace mRemoteNG.App
             {
                 case ".xml":
                     return FileType.mRemoteXml;
+                case ".csv":
+                    return FileType.mRemoteCsv;
                 case ".rdp":
                     return FileType.RemoteDesktopConnection;
                 case ".rdg":

@@ -30,9 +30,9 @@ namespace mRemoteNG.Config.Import
         public void Import(string fileName, ContainerInfo destinationContainer)
 		{
             var dataProvider = new FileDataProvider(fileName);
-            var xmlString = dataProvider.Load();
-            var xmlConnectionsDeserializer = new XmlConnectionsDeserializer(xmlString);
-            var connectionTreeModel = xmlConnectionsDeserializer.Deserialize(true);
+            var csvString = dataProvider.Load();
+            var csvConnectionsDeserializer = new CsvConnectionsDeserializerMremotengFormat(csvString);
+            var connectionTreeModel = csvConnectionsDeserializer.Deserialize();
 
             var rootImportContainer = new ContainerInfo { Name = Path.GetFileNameWithoutExtension(fileName) };
             rootImportContainer.AddChildRange(connectionTreeModel.RootNodes.First().Children.ToArray());
